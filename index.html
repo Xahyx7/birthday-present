@@ -82,13 +82,14 @@
       to { transform: scale(0.95) rotate(-2deg); }
     }
 
-    .message {
-      margin-top: 2em;
+    .message-box {
+      margin-top: 3em;
+      display: none;
       background: #fff;
       color: #ff4e91;
       border: 3px dashed #fff700;
       border-radius: 15px;
-      padding: 1em;
+      padding: 1.2em;
       max-width: 90%;
       margin-left: auto;
       margin-right: auto;
@@ -112,15 +113,77 @@
       left: 0;
     }
 
-    .panel {
-      margin-top: 2em;
-      max-width: 90%;
+    .gift-box {
+      width: 120px;
+      height: 120px;
+      background: #ff69b4;
+      margin: 2em auto 0;
+      position: relative;
+      border-radius: 15px;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+      box-shadow: 0 10px 15px rgba(0,0,0,0.2);
     }
 
-    .panel img {
-      max-width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    .gift-box:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 20px;
+      height: 100%;
+      background: #fff700;
+      transform: translateX(-50%);
+    }
+
+    .gift-box:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background: #fff700;
+      transform: translateY(-50%);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: floatUp 3s ease-out forwards;
+      opacity: 0.8;
+    }
+
+    .heart:before, .heart:after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart:before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart:after {
+      top: 0;
+      left: -10px;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-150px) scale(0.5); opacity: 0; }
     }
   </style>
 </head>
@@ -128,13 +191,7 @@
 
 <canvas id="confetti-canvas"></canvas>
 
-<h1>Happy Birthday, my Cutieee! 💗 You are the sparkle in my eyes and the brightest star in my life. Watching you grow into this lovely, kind-hearted, and beautiful soul fills me with pride and joy every single day.
-
-May your day be filled with endless smiles, giggles, balloons, cake, and love! 🎈🎂 You're not just a little princess — you're the whole fairytale 💫
-
-Never forget how special you are, cutie. Shine bright always, because the world needs your sparkle 🌟
-
-From your Motu 💖</h1>
+<h1>🎉 Happy Birthday Aafia! 🎂</h1>
 
 <div class="cake-container">
   <div class="cake" id="cake">
@@ -144,12 +201,15 @@ From your Motu 💖</h1>
   </div>
 </div>
 
-<div class="panel">
-  <img src="https://i.pinimg.com/originals/2c/e7/c4/2ce7c4947b66e1f6e15a7df270f5a3c4.jpg" alt="Birthday Manga">
-</div>
+<!-- 🎁 Gift Box -->
+<div class="gift-box" id="giftBox" title="Click to reveal!"></div>
 
-<div class="message">
-  Wishing you a day full of sweetness, smiles, and sparkles! 💫 May your year ahead be as lovely as you. 🎈💖
+<!-- ❤️ Message Revealed -->
+<div class="message-box" id="messageBox">
+  <strong>To my sweetest Cutie Aafia,</strong><br><br>
+  Happy Birthday, my jaan! 💗 You are the sparkle in our eyes and the brightest star in our lives. Watching you grow into this lovely, kind-hearted, and beautiful soul fills me with pride and joy every single day.<br><br>
+  May your day be filled with endless smiles, giggles, balloons, cake, and love! 🎈🎂 You're not just a little princess — you're the whole fairytale 💫<br><br>
+  <strong>From your Motu 💖</strong>
 </div>
 
 <!-- 🎵 Birthday Music -->
@@ -162,26 +222,51 @@ From your Motu 💖</h1>
 <script>
   const flame = document.getElementById('flame');
   const cake = document.getElementById('cake');
+  const giftBox = document.getElementById('giftBox');
+  const messageBox = document.getElementById('messageBox');
 
   function burst() {
     confetti({
-      particleCount: 120,
-      spread: 100,
+      particleCount: 100,
+      spread: 90,
       origin: { y: 0.6 }
     });
   }
 
+  function floatHearts() {
+    for (let i = 0; i < 10; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + '%';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 3000);
+    }
+  }
+
+  // Initial effects
   window.onload = () => {
     burst();
-    setTimeout(burst, 1500);
+    setTimeout(burst, 1400);
     setTimeout(() => {
-      flame.style.display = 'none'; // blow out candle
+      flame.style.display = 'none';
     }, 4000);
     setTimeout(() => {
-      cake.classList.add('cut'); // cake cut animation
+      cake.classList.add('cut');
     }, 5000);
-    setTimeout(burst, 6000);
+
+    // Gift auto open
+    setTimeout(() => {
+      giftBox.style.display = 'none';
+      messageBox.style.display = 'block';
+      floatHearts();
+    }, 7000);
   };
+
+  giftBox.addEventListener('click', () => {
+    giftBox.style.display = 'none';
+    messageBox.style.display = 'block';
+    floatHearts();
+  });
 </script>
 
 </body>

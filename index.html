@@ -8,59 +8,62 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom right, #ff4e91, #ffa5d8);
+      background: linear-gradient(#ffc0cb, #ffe4e1);
       font-family: 'Comic Sans MS', cursive, sans-serif;
-      color: #fff;
       overflow-x: hidden;
-      text-align: center;
     }
 
     .container {
-      padding: 2em 1em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1em;
+      text-align: center;
     }
 
     h1 {
-      font-size: 3em;
-      color: #fff700;
-      text-shadow: 2px 2px 8px #000;
-      margin-bottom: 0.5em;
+      font-size: 2.5em;
+      margin-top: 0.5em;
+      color: #d63384;
     }
 
     .cake {
       position: relative;
-      width: 160px;
-      height: 160px;
-      margin: auto;
-      background: #ff9aa2;
+      width: 150px;
+      height: 150px;
+      background: #fdd;
       border-radius: 10px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      margin-top: 1em;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     .candle {
       position: absolute;
-      top: -35px;
+      top: -30px;
       left: 50%;
-      width: 12px;
-      height: 35px;
-      background: #333;
+      width: 10px;
+      height: 30px;
+      background: #444;
       transform: translateX(-50%);
     }
 
     .flame {
       position: absolute;
-      top: -18px;
+      top: -15px;
       left: 50%;
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       background: gold;
       border-radius: 50%;
       transform: translateX(-50%);
-      animation: flicker 0.3s infinite alternate;
+      animation: flicker 0.4s infinite alternate;
     }
 
     @keyframes flicker {
-      from { opacity: 1; transform: scale(1); }
-      to { opacity: 0.6; transform: scale(1.2); }
+      from { opacity: 1; transform: translateX(-50%) scale(1); }
+      to { opacity: 0.6; transform: translateX(-50%) scale(1.2); }
     }
 
     #confetti-canvas {
@@ -75,27 +78,30 @@
 
     .teddy {
       margin-top: 2em;
-      max-width: 220px;
-      animation: fadeInUp 1.5s ease-out forwards;
+      width: 200px;
+      display: none;
+      animation: fadeIn 2s forwards;
     }
 
     .panel, .message {
+      display: none;
       margin-top: 2em;
-      background: #fff;
-      color: #ff4e91;
-      border: 3px dashed #fff700;
-      border-radius: 15px;
+      background: #fff0f5;
+      border: 2px dashed #d63384;
+      border-radius: 12px;
       padding: 1em;
       max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-      animation: fadeInUp 1.5s ease-out forwards;
+      animation: fadeInUp 1.5s forwards;
     }
 
     .panel img {
-      max-width: 100%;
-      border-radius: 10px;
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeInUp {
@@ -109,7 +115,7 @@
 <canvas id="confetti-canvas"></canvas>
 
 <div class="container">
-  <h1>🎂 Happy Birthday Aafia! 🎈</h1>
+  <h1>Happy Birthday Aafia! 🎉</h1>
 
   <div class="cake">
     <div class="candle">
@@ -117,37 +123,44 @@
     </div>
   </div>
 
-  <img src="https://cdn.pixabay.com/photo/2022/12/13/17/50/teddy-bear-7653725_960_720.png" alt="Teddy" class="teddy" id="teddy">
+  <img src="https://cdn.pixabay.com/photo/2013/07/12/17/59/teddy-bear-152417_1280.png" alt="Teddy" class="teddy" id="teddy">
 
-  <div class="panel">
-    <img src="https://i.pinimg.com/originals/2c/e7/c4/2ce7c4947b66e1f6e15a7df270f5a3c4.jpg" alt="Manga Panel">
+  <div class="panel" id="mangaPanel">
+    <img src="https://i.pinimg.com/originals/2c/e7/c4/2ce7c4947b66e1f6e15a7df270f5a3c4.jpg" alt="Manga panel">
   </div>
 
-  <div class="message">
-    <p>Wishing you a magical day full of joy, cake, and warm hugs! 💕 You’re amazing Aafia, and I’m lucky to be celebrating you today. 🥳</p>
+  <div class="message" id="heartfeltMessage">
+    <p>Wishing you a day filled with love, laughter, and sweet surprises. You're truly special Aafia, and I hope this little digital surprise brings a smile to your face. 💖🎂</p>
   </div>
 </div>
 
-<!-- Birthday Music -->
 <audio autoplay loop>
-  <source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mp3" type="audio/mp3">
+  <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
 </audio>
 
-<!-- Confetti -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 <script>
-  function burst() {
+  // Confetti burst
+  function launchConfetti() {
     confetti({
       particleCount: 150,
-      spread: 120,
-      origin: { y: 0.6 }
+      spread: 100,
+      origin: { y: 0.6 },
     });
   }
 
-  window.onload = () => {
-    burst();
-    setTimeout(burst, 1500);
-    setTimeout(burst, 3000);
+  // Animate the rest
+  window.onload = async () => {
+    launchConfetti();
+
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    document.getElementById('teddy').style.display = 'block';
+
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    document.getElementById('mangaPanel').style.display = 'block';
+
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    document.getElementById('heartfeltMessage').style.display = 'block';
   };
 </script>
 

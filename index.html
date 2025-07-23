@@ -1,170 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Aafia!</title>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #ffc0cb;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      overflow-x: hidden;
-    }
-    #container {
-      width: 100%;
-      height: 100vh;
-      position: relative;
-      overflow: hidden;
-    }
-    #opening {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 3em;
-      color: white;
-      font-weight: bold;
-      height: 100vh;
-      width: 100%;
-      background: #ff69b4;
-      animation: openingFadeScale 2s forwards;
-      z-index: 10;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-    @keyframes openingFadeScale {
-      0% {opacity: 0; transform: scale(0.5);}
-      100% {opacity: 1; transform: scale(1);}
-    }
-    #confetti {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      pointer-events: none;
-    }
-    .confetti-piece {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background-color: #fff;
-      opacity: 0.8;
-      animation-timing-function: ease-out;
-      border-radius: 3px;
-    }
-    #birthdayMessage {
-      display: none;
-      text-align: center;
-      color: #fff;
-      font-size: 3em;
-      margin-top: 1em;
-      font-weight: 900;
-      text-shadow: 0 0 10px #fff, 0 0 20px #ffb6c1;
-    }
-    #messageBox {
-      background: rgba(255, 182, 193, 0.8);
-      border-radius: 20px;
-      padding: 1em 2em;
-      max-width: 600px;
-      margin: 2em auto 0 auto;
-      box-shadow: 0 0 15px #ffb6c1;
-      display: none;
-    }
-    #cakeArea {
-      display: none;
-      position: relative;
-      width: 300px;
-      height: 300px;
-      margin: 3em auto 0 auto;
-    }
-    #cake {
-      width: 150px;
-      height: 150px;
-      background: linear-gradient(#fff1f0, #ffb6c1);
-      border-radius: 15px 15px 0 0;
-      border: 4px solid #e75480;
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%) scale(0);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      animation-fill-mode: forwards;
-      animation-delay: 0.2s;
-    }
-    #candle {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%) scale(0);
-      width: 12px;
-      height: 50px;
-      background: #ff6666;
-      border-radius: 3px;
-      box-shadow: 0 0 5px 2px #ff9999;
-      animation-fill-mode: forwards;
-      animation-delay: 1s;
-    }
-    #flame {
-      position: absolute;
-      top: -15px;
-      left: 50%;
-      transform: translateX(-50%) scale(0);
-      width: 20px;
-      height: 25px;
-      background: radial-gradient(circle at 50% 50%, #ffdd55, #ff6600);
-      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-      filter: drop-shadow(0 0 5px #ffcc33);
-      animation-fill-mode: forwards;
-      animation-delay: 1.5s;
-    }
-    #teddy {
-      width: 200px;
-      height: 250px;
-      margin: 2em auto 0 auto;
-      position: relative;
-      animation: teddyAppear 1.5s forwards;
-      opacity: 0;
-      transform: translateY(20px);
-      background: url('https://i.postimg.cc/vTXNmqpV/teddy-mascot.png') no-repeat center/contain;
-    }
-    @keyframes teddyAppear {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    #mangaPanel {
-      border: 4px solid #e75480;
-      border-radius: 10px;
-      background: #fff0f5;
-      max-width: 400px;
-      margin: 2em auto;
-      padding: 1em 2em;
-      font-size: 1.4em;
-      color: #e75480;
-      font-weight: 700;
-      font-family: 'Comic Sans MS', cursive;
-      box-shadow: 10px 10px 0 #ffb6c1;
-      display: none;
-    }
-    #heartfeltMessage {
-      max-width: 600px;
-      margin: 3em auto;
-      font-size: 1.3em;
-      background: rgba(255, 182, 193, 0.6);
-      padding: 2em;
-      border-radius: 15px;
-      color: #5a1a1a;
-      line-height: 1.6;
-      font-style: italic;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: none;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Happy Birthday Aafia!</title>
+<style>
+  /* Body & container */
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    background: #ffc0cb;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    overflow-x: hidden;
+    color: #8b006b;
+  }
+  #container {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    text-align: center;
+  }
+
+  /* Opening */
+  #opening {
+    display: flex; justify-content: center; align-items: center;
+    font-size: 3.4em; font-weight: 900; color: white;
+    background: #ff69b4;
+    height: 100vh; width: 100%;
+    position: fixed; top: 0; left: 0;
+    transform-origin: center;
+    animation: openingFadeScale 2.2s forwards;
+    z-index: 9999;
+  }
+  @keyframes openingFadeScale {
+    0% {opacity: 0; transform: scale(0.6);}
+    60% {opacity: 1; transform: scale(1.05);}
+    100% {opacity: 1; transform: scale(1);}
+  }
+
+  /* Confetti */
+  #confetti {
+    position: fixed;
+    pointer-events: none;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 50;
+  }
+  .confetti-piece {
+    position: absolute;
+    width: 10px; height: 10px;
+    border-radius: 3px;
+    opacity: 0.9;
+    animation-timing-function: ease-out;
+  }
+
+  /* Birthday message */
+  #birthdayMessage {
+    font-size: 3.2em;
+    font-weight: 900;
+    margin-top: 1em;
+    color: white;
+    text-shadow:
+      0 0 12px rgba(255, 182, 193, 0.9),
+      0 0 20px rgba(255, 105, 180, 0.9);
+    display: none;
+  }
+
+  /* Cake */
+  #cakeArea {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 2.5em auto 0;
+    display: none;
+    user-select: none;
+  }
+  #cake {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(#fff1f0, #ffb6c1);
+    border-radius: 20px 20px 0 0;
+    border: 5px solid #e75480;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    animation-fill-mode: forwards;
+  }
+  #candle {
+    width: 14px;
+    height: 55px;
+    background: #ff6666;
+    border-radius: 4px;
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    box-shadow: 0 0 10px 3px #ff9999;
+    animation-fill-mode: forwards;
+  }
+  #flame {
+    width: 24px;
+    height: 28px;
+    background: radial-gradient(circle at 50% 50%, #ffdd55, #ff6600);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: absolute;
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    filter: drop-shadow(0 0 6px #ffcc33);
+    animation-fill-mode: forwards;
+  }
+  @keyframes flicker {
+    0%, 100% {transform: translateX(-50%) scale(1) rotate(0deg);}
+    50% {transform: translateX(-50%) scale(1.05) rotate(5deg);}
+  }
+  #flame.active {
+    animation: flicker 1.2s infinite;
+  }
+
+  /* Teddy */
+  #teddy {
+    width: 220px;
+    height: 280px;
+    margin: 1em auto 0 auto;
+    background: url('https://i.postimg.cc/vTXNmqpV/teddy-mascot.png') no-repeat center/contain;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  /* Manga style panel */
+  #mangaPanel {
+    max-width: 380px;
+    background: #fff0f5;
+    border-radius: 14px;
+    border: 5px solid #e75480;
+    box-shadow: 14px 14px 0 #ffb6c1;
+    font-weight: 700;
+    font-family: 'Comic Sans MS', cursive;
+    font-size: 1.8em;
+    color: #e75480;
+    margin: 2em auto 0 auto;
+    padding: 1em 1.8em;
+    display: none;
+    user-select: none;
+  }
+
+  /* Heartfelt message */
+  #heartfeltMessage {
+    max-width: 600px;
+    margin: 3em auto 4em auto;
+    font-size: 1.3em;
+    background: rgba(255, 182, 193, 0.7);
+    color: #5a1a1a;
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 14px;
+    padding: 2em 2.5em;
+    line-height: 1.6;
+    display: none;
+  }
+</style>
 </head>
 <body>
 <div id="container">
@@ -183,118 +179,141 @@
   <div id="heartfeltMessage"></div>
 </div>
 <script>
-  setTimeout(() => {
-    const opening = document.getElementById('opening');
-    opening.style.transition = 'opacity 2s';
-    opening.style.opacity = '0';
-    setTimeout(() => {
-      opening.style.display = 'none';
-      startConfetti();
-      showBirthdayMessage();
-    }, 2000);
-  }, 3000);
+(async function animateBirthday() {
+  const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+  const opening = document.getElementById('opening');
+  const confettiContainer = document.getElementById('confetti');
+  const birthdayMsg = document.getElementById('birthdayMessage');
+  const messageBox = document.getElementById('messageBox');
+  const cakeArea = document.getElementById('cakeArea');
+  const cake = document.getElementById('cake');
+  const candle = document.getElementById('candle');
+  const flame = document.getElementById('flame');
+  const teddy = document.getElementById('teddy');
+  const mangaPanel = document.getElementById('mangaPanel');
+  const heartfelt = document.getElementById('heartfeltMessage');
 
-  function startConfetti() {
-    const confettiContainer = document.getElementById('confetti');
-    for (let i = 0; i < 150; i++) {
-      const confetti = document.createElement('div');
-      confetti.classList.add('confetti-piece');
-      confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 75%)`;
-      confetti.style.left = Math.random() * window.innerWidth + 'px';
-      confetti.style.top = Math.random() * -100 + 'px';
-      confetti.style.width = confetti.style.height = Math.random() * 8 + 4 + 'px';
-      confettiContainer.appendChild(confetti);
-      animateConfetti(confetti);
-    }
-  }
+  // 1. Opening screen animation
+  await delay(3000);
+  opening.style.transition = 'opacity 2s ease, transform 2s ease';
+  opening.style.opacity = 0;
+  opening.style.transform = 'scale(0.3)';
+  await delay(2000);
+  opening.style.display = 'none';
 
-  function animateConfetti(confetti) {
-    const fallDuration = 3000 + Math.random() * 3000;
-    confetti.style.transition = `transform ${fallDuration}ms linear, opacity 500ms`;
-    confetti.style.transform = `translateY(${window.innerHeight + 100}px) rotate(${Math.random()*360}deg)`;
+  // 2. Start confetti continuously
+  startConfetti(confettiContainer);
+
+  // 3. Show birthday message
+  birthdayMsg.style.display = 'block';
+  birthdayMsg.animate(
+    [{opacity: 0, transform: 'scale(0.5)'}, {opacity: 1, transform: 'scale(1)'}],
+    {duration: 1800, fill: 'forwards', easing: 'ease-out'}
+  );
+  await delay(7000);
+  birthdayMsg.style.display = 'none';
+
+  // 4. Show cake and animate
+  messageBox.style.display = 'block';
+  cakeArea.style.display = 'block';
+  cake.style.transform = 'translateX(-50%) scale(0)';
+  cake.animate(
+    [{ transform: 'translateX(-50%) scale(0)' }, { transform: 'translateX(-50%) scale(1)' }],
+    { duration: 1000, fill: 'forwards', easing: 'ease-out' }
+  );
+  cake.style.transform = 'translateX(-50%) scale(1)';
+  await delay(500);
+
+  candle.style.transform = 'translateX(-50%) scale(0)';
+  candle.animate(
+    [{ transform: 'translateX(-50%) scale(0)' }, { transform: 'translateX(-50%) scale(1)' }],
+    { duration: 800, fill: 'forwards', easing: 'ease-out' }
+  );
+  candle.style.transform = 'translateX(-50%) scale(1)';
+  await delay(800);
+
+  flame.style.transform = 'translateX(-50%) scale(0)';
+  flame.animate(
+    [{ transform: 'translateX(-50%) scale(0)' }, { transform: 'translateX(-50%) scale(1)' }],
+    { duration: 800, fill: 'forwards', easing: 'ease-out' }
+  );
+  flame.style.transform = 'translateX(-50%) scale(1)';
+  flame.classList.add('active'); // flame flicker
+  await delay(3000);
+
+  // 5. Teddy appears
+  teddy.style.opacity = 0;
+  teddy.style.transform = 'translateY(30px)';
+  teddy.style.display = 'block';
+  teddy.animate(
+    [{opacity: 0, transform: 'translateY(30px)'}, {opacity: 1, transform: 'translateY(0)'}],
+    {duration: 1400, easing: 'ease-out', fill: 'forwards'}
+  );
+  teddy.style.opacity = 1;
+  teddy.style.transform = 'translateY(0)';
+  await delay(1400);
+
+  // 6. Teddy blows candle (fade out flame)
+  flame.classList.remove('active');
+  flame.animate([{opacity: 1}, {opacity: 0}], {duration: 1500, fill: 'forwards'});
+  flame.style.opacity = 0;
+  await delay(1500);
+
+  // 7. Manga-style panel message
+  mangaPanel.style.display = 'block';
+  mangaPanel.textContent = 'Happy Birthday, Aafia!';
+  mangaPanel.animate(
+    [{opacity: 0, transform: 'scale(0.7) translateY(40px)'}, {opacity: 1, transform: 'scale(1) translateY(0)'}],
+    {duration: 1500, fill: 'forwards', easing: 'ease-out'}
+  );
+  await delay(7000);
+
+  // 8. Heartfelt message
+  heartfelt.style.display = 'block';
+  heartfelt.innerHTML = `
+    To my cutie, on this very special day,<br/>
+    May your dreams shine bright and your heart be filled with joy.<br/>
+    Wishing you all the best<br/>
+    For your wonderful journey at Aligarh Muslim University.<br/>
+    Keep being amazing! ❤️
+  `;
+  heartfelt.animate([{opacity: 0}, {opacity: 1}], {duration: 1500, fill: 'forwards'});
+})();
+
+// Confetti logic - colors and continuous falling animation
+function startConfetti(container) {
+  const colors = ['#ffd1dc', '#ff69b4', '#ffb6c1', '#ffa6c9', '#ffc0cb'];
+  const confettiCount = 120;
+
+  function createConfetti() {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti-piece');
+    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.left = Math.random() * window.innerWidth + 'px';
+    confetti.style.top = '-10px';
+    const size = Math.random() * 7 + 4;
+    confetti.style.width = size + 'px';
+    confetti.style.height = size + 'px';
+
+    const fallDuration = 3500 + Math.random() * 3000;
+    confetti.style.transition = `transform ${fallDuration}ms linear, opacity 800ms`;
+    container.appendChild(confetti);
+
+    requestAnimationFrame(() => {
+      confetti.style.transform = `translateY(${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg)`;
+      confetti.style.opacity = '0';
+    });
+    
     setTimeout(() => {
       confetti.remove();
-    }, fallDuration);
-    setTimeout(() => {
-      if(document.getElementById('confetti')) {
-        const newConfetti = document.createElement('div');
-        newConfetti.classList.add('confetti-piece');
-        newConfetti.style.backgroundColor = confetti.style.backgroundColor;
-        newConfetti.style.left = Math.random() * window.innerWidth + 'px';
-        newConfetti.style.top = Math.random() * -100 + 'px';
-        newConfetti.style.width = newConfetti.style.height = confetti.style.width;
-        document.getElementById('confetti').appendChild(newConfetti);
-        animateConfetti(newConfetti);
-      }
-    }, fallDuration / 2);
+      createConfetti();
+    }, fallDuration + 500);
   }
 
-  function showBirthdayMessage() {
-    const msg = document.getElementById('birthdayMessage');
-    msg.style.display = 'block';
-    msg.animate(
-      [
-        {opacity: 0, transform: 'scale(0.5)'},
-        {opacity: 1, transform: 'scale(1)'}
-      ],
-      {duration: 2000, fill: 'forwards'}
-    );
-    setTimeout(() => {
-      showCakeAndTeddy();
-    }, 3000);
+  for(let i=0; i<confettiCount; i++){
+    setTimeout(createConfetti, i * 150);
   }
-
-  function showCakeAndTeddy() {
-    const cakeArea = document.getElementById('cakeArea');
-    const cake = document.getElementById('cake');
-    const candle = document.getElementById('candle');
-    const flame = document.getElementById('flame');
-    const teddy = document.getElementById('teddy');
-    const mangaPanel = document.getElementById('mangaPanel');
-    const messageBox = document.getElementById('messageBox');
-    messageBox.style.display = 'block';
-    cakeArea.style.display = 'block';
-
-    cake.style.animation = 'cakeAppear 1s forwards';
-    cake.style.transform = 'translateX(-50%) scale(1)';
-
-    setTimeout(() => {
-      candle.style.animation = 'candleAppear 1s forwards';
-      candle.style.transform = 'translateX(-50%) scale(1)';
-    }, 800);
-
-    setTimeout(() => {
-      flame.style.animation = 'flameAppear 1s forwards';
-      flame.style.transform = 'translateX(-50%) scale(1)';
-    }, 1300);
-
-    setTimeout(() => {
-      teddy.style.animation = 'teddyAppear 1.5s forwards';
-      teddy.style.opacity = 1;
-    }, 2300);
-
-    setTimeout(() => {
-      mangaPanel.style.display = 'block';
-      mangaPanel.textContent = 'Happy Birthday, Aafia!';
-    }, 4000);
-
-    setTimeout(() => {
-      const heartfelt = document.getElementById('heartfeltMessage');
-      heartfelt.innerHTML = `
-        To my cutie, on this very special day,<br>
-        May your dreams shine bright and your heart be filled with joy.<br>
-        Wishing you all the best<br>
-        For your wonderful journey at Aligarh Muslim University.<br>
-        Keep being amazing! ❤️
-      `;
-      heartfelt.style.display = 'block';
-    }, 6000);
-  }
-
-  const styleSheet = document.styleSheets[0];
-  styleSheet.insertRule(`@keyframes cakeAppear { from {transform: translateX(-50%) scale(0);} to {transform: translateX(-50%) scale(1);} }`, styleSheet.cssRules.length);
-  styleSheet.insertRule(`@keyframes candleAppear { from {transform: translateX(-50%) scale(0);} to {transform: translateX(-50%) scale(1);} }`, styleSheet.cssRules.length);
-  styleSheet.insertRule(`@keyframes flameAppear { from {transform: translateX(-50%) scale(0);} to {transform: translateX(-50%) scale(1);} }`, styleSheet.cssRules.length);
+}
 </script>
 </body>
 </html>

@@ -2,246 +2,154 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Birthday Aafia!</title>
   <style>
-    body, html {
-      margin: 0; padding: 0; height: 100%;
-      background: #ffc0cb;
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #ff4e91, #ffa5d8);
       font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: #fff;
       overflow-x: hidden;
-      color: #8b006b;
+      text-align: center;
     }
-    #container {
-      width: 100%;
-      min-height: 100vh;
+
+    .container {
+      padding: 2em 1em;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #fff700;
+      text-shadow: 2px 2px 8px #000;
+      margin-bottom: 0.5em;
+    }
+
+    .cake {
       position: relative;
-      text-align: center;
-      padding: 0 1rem;
-      box-sizing: border-box;
+      width: 160px;
+      height: 160px;
+      margin: auto;
+      background: #ff9aa2;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
     }
-    #opening {
-      display: flex; justify-content: center; align-items: center;
-      font-size: 2.5em; font-weight: 900; color: white;
-      background: #ff69b4;
-      height: 100vh; width: 100%;
-      position: fixed; top: 0; left: 0;
-      transform-origin: center;
-      animation: openingFadeScale 2.2s forwards;
-      z-index: 9999;
-      padding: 0 1rem;
-      text-align: center;
-    }
-    @keyframes openingFadeScale {
-      0%   { opacity: 0; transform: scale(0.6); }
-      60%  { opacity: 1; transform: scale(1.05); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-    #confetti {
-      position: fixed; top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      pointer-events: none;
-      z-index: 50;
-    }
-    .confetti-piece {
+
+    .candle {
       position: absolute;
-      width: 8px; height: 8px;
+      top: -35px;
+      left: 50%;
+      width: 12px;
+      height: 35px;
+      background: #333;
+      transform: translateX(-50%);
+    }
+
+    .flame {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      background: gold;
       border-radius: 50%;
-      opacity: 0.9;
-      animation-timing-function: ease-out;
+      transform: translateX(-50%);
+      animation: flicker 0.3s infinite alternate;
     }
-    #birthdayMessage {
-      font-size: 2.5em;
-      margin-top: 2rem;
-      font-weight: 900;
-      color: white;
-      text-shadow: 0 0 12px rgba(255,182,193,0.9),
-                   0 0 20px rgba(255,105,180,0.9);
-      display: none;
-    }
-    #cakeArea {
-      position: relative;
-      width: 250px;
-      height: 250px;
-      margin: 2em auto 0;
-      display: none;
-    }
-    #cake {
-      width: 150px; height: 150px;
-      background: linear-gradient(#fff1f0,#ffb6c1);
-      border-radius: 20px 20px 0 0;
-      border: 5px solid #e75480;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-      position: absolute;
-      bottom: 0; left: 50%;
-      transform: translateX(-50%) scale(0);
-      animation-fill-mode: forwards;
-    }
-    #candle {
-      width: 14px; height: 55px;
-      background: #ff6666;
-      border-radius: 4px;
-      position: absolute;
-      top: 15px; left: 50%;
-      transform: translateX(-50%) scale(0);
-      box-shadow: 0 0 10px 3px #ff9999;
-      animation-fill-mode: forwards;
-    }
-    #flame {
-      width: 24px; height: 28px;
-      background: radial-gradient(circle at 50% 50%, #ffdd55,#ff6600);
-      border-radius: 50% 50% 50% 50%/60% 60% 40% 40%;
-      position: absolute;
-      top: -22px; left: 50%;
-      transform: translateX(-50%) scale(0);
-      filter: drop-shadow(0 0 6px #ffcc33);
-      animation-fill-mode: forwards;
-    }
+
     @keyframes flicker {
-      0%,100%   { transform: translateX(-50%) scale(1) rotate(0); }
-      50%       { transform: translateX(-50%) scale(1.05) rotate(5deg); }
+      from { opacity: 1; transform: scale(1); }
+      to { opacity: 0.6; transform: scale(1.2); }
     }
-    #flame.active {
-      animation: flicker 1.2s infinite;
+
+    #confetti-canvas {
+      position: fixed;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      top: 0;
+      left: 0;
     }
-    #teddy {
-      width: 220px; height: 280px;
-      margin: 1em auto 0;
-      background: url('https://i.imgur.com/YOUR-IMAGE.png') no-repeat center/contain;
-      opacity: 0;
-      transform: translateY(30px);
-      display: none;
+
+    .teddy {
+      margin-top: 2em;
+      max-width: 220px;
+      animation: fadeInUp 1.5s ease-out forwards;
     }
-    #mangaPanel {
+
+    .panel, .message {
+      margin-top: 2em;
+      background: #fff;
+      color: #ff4e91;
+      border: 3px dashed #fff700;
+      border-radius: 15px;
+      padding: 1em;
       max-width: 90%;
-      background: #fff0f5;
-      border-radius: 14px;
-      border: 5px solid #e75480;
-      box-shadow: 14px 14px 0 #ffb6c1;
-      font-size: 1.6em;
-      font-weight: 700;
-      color: #e75480;
-      margin: 2em auto 0;
-      padding: 1em 1.2em;
-      display: none;
-      user-select: none;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      animation: fadeInUp 1.5s ease-out forwards;
     }
-    #heartfeltMessage {
-      max-width: 95%;
-      margin: 3em auto 4em;
-      background: rgba(255,182,193,0.7);
-      color: #5a1a1a;
-      font-size: 1.1em;
-      font-style: italic;
-      line-height: 1.6;
-      border-radius: 14px;
-      padding: 2em;
-      display: none;
+
+    .panel img {
+      max-width: 100%;
+      border-radius: 10px;
     }
-    @media(max-width:480px) {
-      #opening, #birthdayMessage { font-size: 2em; }
-      #mangaPanel { font-size: 1.3em; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <!-- Background music -->
-  <audio autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_73827f4e86.mp3?filename=birthday-happy-115571.mp3" type="audio/mpeg">
-  </audio>
 
-  <div id="container">
-    <div id="opening">Welcome to a Special Day!</div>
-    <div id="confetti"></div>
-    <div id="birthdayMessage">Happy Birthday, Sweetheart!</div>
-    <div id="messageBox">
-      <div id="cakeArea">
-        <div id="cake"></div>
-        <div id="candle"></div>
-        <div id="flame"></div>
-      </div>
-      <div id="teddy"></div>
-      <div id="mangaPanel"></div>
+<canvas id="confetti-canvas"></canvas>
+
+<div class="container">
+  <h1>🎂 Happy Birthday Aafia! 🎈</h1>
+
+  <div class="cake">
+    <div class="candle">
+      <div class="flame"></div>
     </div>
-    <div id="heartfeltMessage"></div>
   </div>
 
-  <script>
-    ;(async function animateBirthday() {
-      const delay = ms => new Promise(r => setTimeout(r, ms));
-      const dom = ['opening','confetti','birthdayMessage','messageBox','cakeArea','cake','candle','flame','teddy','mangaPanel','heartfeltMessage']
-        .reduce((o,id)=> (o[id]=document.getElementById(id),o), {});
-      await delay(3000);
-      dom.opening.style.transition = 'opacity 2s,transform 2s';
-      dom.opening.style.opacity = 0;
-      dom.opening.style.transform = 'scale(0.3)';
-      await delay(2000);
-      dom.opening.style.display = 'none';
-      startConfetti(dom.confetti);
+  <img src="https://cdn.pixabay.com/photo/2022/12/13/17/50/teddy-bear-7653725_960_720.png" alt="Teddy" class="teddy" id="teddy">
 
-      dom.birthdayMessage.style.display = 'block';
-      dom.birthdayMessage.animate([{opacity:0,transform:'scale(0.5)'},{opacity:1,transform:'scale(1)'}],{duration:1800,fill:'forwards',easing:'ease-out'});
-      await delay(7000);
-      dom.birthdayMessage.style.display = 'none';
+  <div class="panel">
+    <img src="https://i.pinimg.com/originals/2c/e7/c4/2ce7c4947b66e1f6e15a7df270f5a3c4.jpg" alt="Manga Panel">
+  </div>
 
-      dom.messageBox.style.display = dom.cakeArea.style.display = 'block';
-      await delay(100);
-      dom.cake.animate([{transform:'translateX(-50%) scale(0)'},{transform:'translateX(-50%) scale(1)'}],{duration:1000,fill:'forwards',easing:'ease-out'});
-      await delay(500);
-      dom.candle.animate([{transform:'translateX(-50%) scale(0)'},{transform:'translateX(-50%) scale(1)'}],{duration:800,fill:'forwards',easing:'ease-out'});
-      await delay(800);
-      dom.flame.animate([{transform:'translateX(-50%) scale(0)'},{transform:'translateX(-50%) scale(1)'}],{duration:800,fill:'forwards',easing:'ease-out'});
-      dom.flame.classList.add('active');
-      await delay(3000);
+  <div class="message">
+    <p>Wishing you a magical day full of joy, cake, and warm hugs! 💕 You’re amazing Aafia, and I’m lucky to be celebrating you today. 🥳</p>
+  </div>
+</div>
 
-      dom.teddy.style.display = 'block';
-      await delay(100);
-      dom.teddy.animate([{opacity:0,transform:'translateY(30px)'},{opacity:1,transform:'translateY(0)'}],{duration:1400,fill:'forwards',easing:'ease-out'});
-      await delay(1400);
+<!-- Birthday Music -->
+<audio autoplay loop>
+  <source src="https://www2.cs.uic.edu/~i101/SoundFiles/HappyBirthday.mp3" type="audio/mp3">
+</audio>
 
-      dom.flame.classList.remove('active');
-      dom.flame.animate([{opacity:1},{opacity:0}],{duration:1500,fill:'forwards'});
-      await delay(1500);
+<!-- Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+  function burst() {
+    confetti({
+      particleCount: 150,
+      spread: 120,
+      origin: { y: 0.6 }
+    });
+  }
 
-      dom.mangaPanel.style.display = 'block';
-      dom.mangaPanel.textContent = 'Happy Birthday, Aafia!';
-      await delay(100);
-      dom.mangaPanel.animate([{opacity:0,transform:'scale(0.7) translateY(40px)'},{opacity:1,transform:'scale(1) translateY(0)'}],{duration:1500,fill:'forwards',easing:'ease-out'});
-      await delay(7000);
+  window.onload = () => {
+    burst();
+    setTimeout(burst, 1500);
+    setTimeout(burst, 3000);
+  };
+</script>
 
-      dom.heartfeltMessage.style.display = 'block';
-      dom.heartfeltMessage.innerHTML = `
-        To my cutie, on this very special day,<br/>
-        May your dreams shine bright and your heart be filled with joy.<br/>
-        Wishing you all the best<br/>
-        For your wonderful journey at Aligarh Muslim University.<br/>
-        Keep being amazing! ❤️
-      `;
-      await delay(100);
-      dom.heartfeltMessage.animate([{opacity:0},{opacity:1}],{duration:1500,fill:'forwards'});
-    })();
-
-    function startConfetti(container) {
-      const colors = ['#FFD1DC','#FF69B4','#FFB6C1','#FFA6C9','#FFC0CB'];
-      const count = 120;
-      for (let i = 0; i < count; i++) {
-        setTimeout(() => {
-          const c = document.createElement('div');
-          c.className = 'confetti-piece';
-          c.style.background = colors[Math.floor(Math.random()*colors.length)];
-          c.style.left = Math.random()*100+'vw';
-          c.style.width = c.style.height = (Math.random()*6+4)+'px';
-          container.append(c);
-          const dur = 3500 + Math.random()*3000;
-          requestAnimationFrame(()=>{
-            c.style.transition = `transform ${dur}ms linear, opacity 800ms`;
-            c.style.transform = `translateY(110vh) rotate(${Math.random()*360}deg)`;
-            c.style.opacity = 0;
-          });
-          setTimeout(()=>{ c.remove(); startConfetti(container); }, dur+200);
-        }, i*150);
-      }
-    }
-  </script>
 </body>
 </html>

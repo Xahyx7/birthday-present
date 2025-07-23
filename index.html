@@ -20,7 +20,6 @@
       padding: 0 1rem;
       box-sizing: border-box;
     }
-
     #opening {
       display: flex; justify-content: center; align-items: center;
       font-size: 2.5em; font-weight: 900; color: white;
@@ -34,148 +33,121 @@
       text-align: center;
     }
     @keyframes openingFadeScale {
-      0% {opacity: 0; transform: scale(0.6);}
-      60% {opacity: 1; transform: scale(1.05);}
-      100% {opacity: 1; transform: scale(1);}
+      0%   { opacity: 0; transform: scale(0.6); }
+      60%  { opacity: 1; transform: scale(1.05); }
+      100% { opacity: 1; transform: scale(1); }
     }
-
     #confetti {
-      position: fixed;
-      pointer-events: none;
-      top: 0; left: 0;
+      position: fixed; top: 0; left: 0;
       width: 100vw; height: 100vh;
+      pointer-events: none;
       z-index: 50;
     }
     .confetti-piece {
       position: absolute;
-      width: 10px; height: 10px;
-      border-radius: 3px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
       opacity: 0.9;
       animation-timing-function: ease-out;
     }
-
     #birthdayMessage {
       font-size: 2.5em;
-      font-weight: 900;
       margin-top: 2rem;
+      font-weight: 900;
       color: white;
-      text-shadow:
-        0 0 12px rgba(255, 182, 193, 0.9),
-        0 0 20px rgba(255, 105, 180, 0.9);
+      text-shadow: 0 0 12px rgba(255,182,193,0.9),
+                   0 0 20px rgba(255,105,180,0.9);
       display: none;
     }
-
     #cakeArea {
       position: relative;
       width: 250px;
       height: 250px;
       margin: 2em auto 0;
       display: none;
-      user-select: none;
     }
     #cake {
-      width: 150px;
-      height: 150px;
-      background: linear-gradient(#fff1f0, #ffb6c1);
+      width: 150px; height: 150px;
+      background: linear-gradient(#fff1f0,#ffb6c1);
       border-radius: 20px 20px 0 0;
       border: 5px solid #e75480;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
       position: absolute;
-      bottom: 0;
-      left: 50%;
+      bottom: 0; left: 50%;
       transform: translateX(-50%) scale(0);
       animation-fill-mode: forwards;
     }
     #candle {
-      width: 14px;
-      height: 55px;
+      width: 14px; height: 55px;
       background: #ff6666;
       border-radius: 4px;
       position: absolute;
-      top: 15px;
-      left: 50%;
+      top: 15px; left: 50%;
       transform: translateX(-50%) scale(0);
       box-shadow: 0 0 10px 3px #ff9999;
       animation-fill-mode: forwards;
     }
     #flame {
-      width: 24px;
-      height: 28px;
-      background: radial-gradient(circle at 50% 50%, #ffdd55, #ff6600);
-      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      width: 24px; height: 28px;
+      background: radial-gradient(circle at 50% 50%, #ffdd55,#ff6600);
+      border-radius: 50% 50% 50% 50%/60% 60% 40% 40%;
       position: absolute;
-      top: -22px;
-      left: 50%;
+      top: -22px; left: 50%;
       transform: translateX(-50%) scale(0);
       filter: drop-shadow(0 0 6px #ffcc33);
       animation-fill-mode: forwards;
     }
     @keyframes flicker {
-      0%, 100% {transform: translateX(-50%) scale(1) rotate(0deg);}
-      50% {transform: translateX(-50%) scale(1.05) rotate(5deg);}
+      0%,100%   { transform: translateX(-50%) scale(1) rotate(0); }
+      50%       { transform: translateX(-50%) scale(1.05) rotate(5deg); }
     }
     #flame.active {
       animation: flicker 1.2s infinite;
     }
-
     #teddy {
-      width: 220px;
-      height: 280px;
-      margin: 1em auto 0 auto;
-      background: url('https://i.postimg.cc/vTXNmqpV/teddy-mascot.png') no-repeat center/contain;
+      width: 220px; height: 280px;
+      margin: 1em auto 0;
+      background: url('https://i.imgur.com/YOUR-IMAGE.png') no-repeat center/contain;
       opacity: 0;
       transform: translateY(30px);
       display: none;
     }
-
     #mangaPanel {
       max-width: 90%;
       background: #fff0f5;
       border-radius: 14px;
       border: 5px solid #e75480;
       box-shadow: 14px 14px 0 #ffb6c1;
-      font-weight: 700;
-      font-family: 'Comic Sans MS', cursive;
       font-size: 1.6em;
+      font-weight: 700;
       color: #e75480;
-      margin: 2em auto 0 auto;
+      margin: 2em auto 0;
       padding: 1em 1.2em;
       display: none;
       user-select: none;
     }
-
     #heartfeltMessage {
       max-width: 95%;
-      margin: 3em auto 4em auto;
-      font-size: 1.1em;
-      background: rgba(255, 182, 193, 0.7);
+      margin: 3em auto 4em;
+      background: rgba(255,182,193,0.7);
       color: #5a1a1a;
+      font-size: 1.1em;
       font-style: italic;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
       border-radius: 14px;
       padding: 2em;
-      line-height: 1.6;
       display: none;
     }
-
-    /* Responsive font scaling */
-    @media screen and (max-width: 480px) {
-      #birthdayMessage {
-        font-size: 2em;
-      }
-      #opening {
-        font-size: 2em;
-      }
-      #mangaPanel {
-        font-size: 1.3em;
-      }
+    @media(max-width:480px) {
+      #opening, #birthdayMessage { font-size: 2em; }
+      #mangaPanel { font-size: 1.3em; }
     }
   </style>
 </head>
 <body>
+  <!-- Background music -->
   <audio autoplay loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_73827f4e86.mp3?filename=birthday-happy-115571.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
   </audio>
 
   <div id="container">
@@ -195,76 +167,50 @@
   </div>
 
   <script>
-    (async function animateBirthday() {
-      const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-      const opening = document.getElementById('opening');
-      const confettiContainer = document.getElementById('confetti');
-      const birthdayMsg = document.getElementById('birthdayMessage');
-      const messageBox = document.getElementById('messageBox');
-      const cakeArea = document.getElementById('cakeArea');
-      const cake = document.getElementById('cake');
-      const candle = document.getElementById('candle');
-      const flame = document.getElementById('flame');
-      const teddy = document.getElementById('teddy');
-      const mangaPanel = document.getElementById('mangaPanel');
-      const heartfelt = document.getElementById('heartfeltMessage');
-
+    ;(async function animateBirthday() {
+      const delay = ms => new Promise(r => setTimeout(r, ms));
+      const dom = ['opening','confetti','birthdayMessage','messageBox','cakeArea','cake','candle','flame','teddy','mangaPanel','heartfeltMessage']
+        .reduce((o,id)=> (o[id]=document.getElementById(id),o), {});
       await delay(3000);
-      opening.style.transition = 'opacity 2s ease, transform 2s ease';
-      opening.style.opacity = 0;
-      opening.style.transform = 'scale(0.3)';
+      dom.opening.style.transition = 'opacity 2s,transform 2s';
+      dom.opening.style.opacity = 0;
+      dom.opening.style.transform = 'scale(0.3)';
       await delay(2000);
-      opening.style.display = 'none';
+      dom.opening.style.display = 'none';
+      startConfetti(dom.confetti);
 
-      startConfetti(confettiContainer);
-
-      birthdayMsg.style.display = 'block';
-      birthdayMsg.animate(
-        [{opacity: 0, transform: 'scale(0.5)'}, {opacity: 1, transform: 'scale(1)'}],
-        {duration: 1800, fill: 'forwards', easing: 'ease-out'}
-      );
+      dom.birthdayMessage.style.display = 'block';
+      dom.birthdayMessage.animate([{opacity:0,transform:'scale(0.5)'},{opacity:1,transform:'scale(1)'}],{duration:1800,fill:'forwards',easing:'ease-out'});
       await delay(7000);
-      birthdayMsg.style.display = 'none';
+      dom.birthdayMessage.style.display = 'none';
 
-      messageBox.style.display = 'block';
-      cakeArea.style.display = 'block';
+      dom.messageBox.style.display = dom.cakeArea.style.display = 'block';
       await delay(100);
-      cake.animate([{ transform: 'translateX(-50%) scale(0)' }, { transform: 'translateX(-50%) scale(1)' }],
-        { duration: 1000, fill: 'forwards', easing: 'ease-out' });
+      dom.cake.animate([{transform:'translateX(-50%) scale(0)'},{transform:'translateX(-50%) scale(1)'}],{duration:1000,fill:'forwards',easing:'ease-out'});
       await delay(500);
-
-      candle.animate([{ transform: 'translateX(-50%) scale(0)' }, { transform: 'translateX(-50%) scale(1)' }],
-        { duration: 800, fill: 'forwards', easing: 'ease-out' });
+      dom.candle.animate([{transform:'translateX(-50%) scale(0)'},{transform:'translateX(-50%) scale(1)'}],{duration:800,fill:'forwards',easing:'ease-out'});
       await delay(800);
-
-      flame.animate([{ transform: 'translateX(-50%) scale(0)' }, { transform: 'translateX(-50%) scale(1)' }],
-        { duration: 800, fill: 'forwards', easing: 'ease-out' });
-      flame.classList.add('active');
+      dom.flame.animate([{transform:'translateX(-50%) scale(0)'},{transform:'translateX(-50%) scale(1)'}],{duration:800,fill:'forwards',easing:'ease-out'});
+      dom.flame.classList.add('active');
       await delay(3000);
 
-      teddy.style.display = 'block';
+      dom.teddy.style.display = 'block';
       await delay(100);
-      teddy.animate(
-        [{opacity: 0, transform: 'translateY(30px)'}, {opacity: 1, transform: 'translateY(0)'}],
-        {duration: 1400, easing: 'ease-out', fill: 'forwards'}
-      );
+      dom.teddy.animate([{opacity:0,transform:'translateY(30px)'},{opacity:1,transform:'translateY(0)'}],{duration:1400,fill:'forwards',easing:'ease-out'});
       await delay(1400);
 
-      flame.classList.remove('active');
-      flame.animate([{opacity: 1}, {opacity: 0}], {duration: 1500, fill: 'forwards'});
+      dom.flame.classList.remove('active');
+      dom.flame.animate([{opacity:1},{opacity:0}],{duration:1500,fill:'forwards'});
       await delay(1500);
 
-      mangaPanel.style.display = 'block';
-      mangaPanel.textContent = 'Happy Birthday, Aafia!';
+      dom.mangaPanel.style.display = 'block';
+      dom.mangaPanel.textContent = 'Happy Birthday, Aafia!';
       await delay(100);
-      mangaPanel.animate(
-        [{opacity: 0, transform: 'scale(0.7) translateY(40px)'}, {opacity: 1, transform: 'scale(1) translateY(0)'}],
-        {duration: 1500, fill: 'forwards', easing: 'ease-out'}
-      );
+      dom.mangaPanel.animate([{opacity:0,transform:'scale(0.7) translateY(40px)'},{opacity:1,transform:'scale(1) translateY(0)'}],{duration:1500,fill:'forwards',easing:'ease-out'});
       await delay(7000);
 
-      heartfelt.style.display = 'block';
-      heartfelt.innerHTML = `
+      dom.heartfeltMessage.style.display = 'block';
+      dom.heartfeltMessage.innerHTML = `
         To my cutie, on this very special day,<br/>
         May your dreams shine bright and your heart be filled with joy.<br/>
         Wishing you all the best<br/>
@@ -272,40 +218,28 @@
         Keep being amazing! ❤️
       `;
       await delay(100);
-      heartfelt.animate([{opacity: 0}, {opacity: 1}], {duration: 1500, fill: 'forwards'});
+      dom.heartfeltMessage.animate([{opacity:0},{opacity:1}],{duration:1500,fill:'forwards'});
     })();
 
     function startConfetti(container) {
-      const colors = ['#ffd1dc', '#ff69b4', '#ffb6c1', '#ffa6c9', '#ffc0cb'];
-      const confettiCount = 120;
-
-      function createConfetti() {
-        const confetti = document.createElement('div');
-        confetti.classList.add('confetti-piece');
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.left = Math.random() * window.innerWidth + 'px';
-        confetti.style.top = '-10px';
-        const size = Math.random() * 7 + 4;
-        confetti.style.width = size + 'px';
-        confetti.style.height = size + 'px';
-
-        const fallDuration = 3500 + Math.random() * 3000;
-        confetti.style.transition = `transform ${fallDuration}ms linear, opacity 800ms`;
-        container.appendChild(confetti);
-
-        requestAnimationFrame(() => {
-          confetti.style.transform = `translateY(${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg)`;
-          confetti.style.opacity = '0';
-        });
-
+      const colors = ['#FFD1DC','#FF69B4','#FFB6C1','#FFA6C9','#FFC0CB'];
+      const count = 120;
+      for (let i = 0; i < count; i++) {
         setTimeout(() => {
-          confetti.remove();
-          createConfetti();
-        }, fallDuration + 500);
-      }
-
-      for (let i = 0; i < confettiCount; i++) {
-        setTimeout(createConfetti, i * 150);
+          const c = document.createElement('div');
+          c.className = 'confetti-piece';
+          c.style.background = colors[Math.floor(Math.random()*colors.length)];
+          c.style.left = Math.random()*100+'vw';
+          c.style.width = c.style.height = (Math.random()*6+4)+'px';
+          container.append(c);
+          const dur = 3500 + Math.random()*3000;
+          requestAnimationFrame(()=>{
+            c.style.transition = `transform ${dur}ms linear, opacity 800ms`;
+            c.style.transform = `translateY(110vh) rotate(${Math.random()*360}deg)`;
+            c.style.opacity = 0;
+          });
+          setTimeout(()=>{ c.remove(); startConfetti(container); }, dur+200);
+        }, i*150);
       }
     }
   </script>
